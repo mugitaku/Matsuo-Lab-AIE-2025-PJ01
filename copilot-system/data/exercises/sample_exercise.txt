@@ -1,0 +1,62 @@
+# Python演習資料サンプル
+
+## リスト内包表記
+
+リスト内包表記は、Pythonで新しいリストを作成する簡潔な方法です。
+
+### 基本構文
+```python
+[式 for 変数 in イテラブル]
+```
+
+### 例1: 数値の2乗
+```python
+numbers = [1, 2, 3, 4, 5]
+squares = [x**2 for x in numbers]
+print(squares)  # [1, 4, 9, 16, 25]
+```
+
+### 例2: 条件付きリスト内包表記
+```python
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+even_numbers = [x for x in numbers if x % 2 == 0]
+print(even_numbers)  # [2, 4, 6, 8, 10]
+```
+
+### 演習問題
+1. 1から20までの数値のうち、3の倍数のみを含むリストを作成してください
+2. 文字列のリストから、5文字以上の単語のみを抽出してください
+3. ネストしたリストを平坦化してください
+
+## 関数とデコレータ
+
+### 関数の基本
+```python
+def greet(name):
+    return f"Hello, {name}!"
+```
+
+### デコレータの基本
+デコレータは、関数を修飾するための仕組みです。
+
+```python
+def timer(func):
+    import time
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        end = time.time()
+        print(f"{func.__name__} took {end - start} seconds")
+        return result
+    return wrapper
+
+@timer
+def slow_function():
+    import time
+    time.sleep(1)
+    return "Done"
+```
+
+### 演習問題
+1. 引数の型をチェックするデコレータを作成してください
+2. 関数の実行結果をキャッシュするデコレータを実装してください
